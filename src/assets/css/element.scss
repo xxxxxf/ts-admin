@@ -1,0 +1,29 @@
+/**
+ *
+ * @Description: 修改 element 的样式
+ * @Author: Owen
+ * @Date: 2019-06-17 16:06
+ *
+ */
+
+.list-body .el-table th {
+  background: $m-table-header-background-color;
+}
+
+.loading .el-loading-spinner {
+  width: 80px;
+  height: 80px;
+
+  left: 50%;
+
+  margin-left: -40px;
+
+  line-height: 80px;
+  font-size: 30px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+
+  i {
+    color: #fff;
+  }
+}

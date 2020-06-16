@@ -1,0 +1,25 @@
+.list-header {
+  height: 60px;
+
+  box-sizing: border-box;
+  padding: 0 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  background: $m-primary-background-color;
+
+  .list-header-title {
+    font-size: 32px;
+    font-weight: normal;
+  }
+
+  .block {
+    flex: 1;
+  }
+
+  .btn-group {
+
+  }
+}
+

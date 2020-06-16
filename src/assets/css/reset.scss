@@ -1,0 +1,43 @@
+/**
+ *
+ * @Description: 样式重置文件
+ * @Author: Owen
+ * @Date: 2019-06-14 16:10
+ *
+ */
+
+body,ol,ul,li,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select {
+    margin: 0;
+    padding: 0
+}
+
+img {
+    border: 0;
+    vertical-align: top
+}
+
+li {
+    list-style: none
+}
+
+iframe {
+    border: none
+}
+
+body {
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+}
+
+a {
+    color: #333;
+    text-decoration: none
+}
+
+a:hover {
+    color: #0c82ff
+}
+
+
+span {
+  display: inline-block;
+}

@@ -1,0 +1,75 @@
+[
+    {
+      "name": "基础数据",
+      "href": "",
+      "icon": "iconshuju",
+      "list": [{
+        "name": "数据字典",
+        "href": "DataDictionary",
+        "list": []
+      }
+      ]
+    },
+    {
+        "name": "客户管理",
+        "href": "",
+        "icon": "iconkehu",
+        "list": [{
+                "name": "客户信息",
+                "href": "customer/customerManagement",   
+                "list": []
+            }
+        ]
+    },    
+    {
+    "name": "挂架管理",
+    "href": "",
+    "icon": "icondiaopai",
+    "list": [{
+            "name": "挂架分类",
+            "href": "Pylons/classification",
+            "list": []
+        },
+        {
+            "name": "挂架信息",
+            "href": "Pylons/information",
+            "list": []
+        }
+    ]
+    },
+    {
+        "name": "交易管理",
+        "href": "",
+        "icon": "iconqian",
+        "list": [{
+                "name": "订单管理",
+                "href": "order",
+                "list": []
+            }
+        ]
+    },
+    {
+    "name": "物流管理",
+    "href": "",
+    "icon": "iconkache",
+    "list": [{
+            "name": "发货管理",
+            "href": "logistics",
+            "list": []
+        }
+    ]
+    },
+    {
+    "name": "系统管理",
+    "href": "",
+    "icon": "iconxingzhuang",
+    "list": [{
+            "name": "用户管理",
+            "href": "User/management",
+            "list": []
+        }
+    ]
+    }
+
+
+]

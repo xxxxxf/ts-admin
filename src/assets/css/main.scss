@@ -1,0 +1,32 @@
+/**
+ *
+ * @Description: 全局样式入口文件
+ * @Author: Owen
+ * @Date: 2019-06-14 16:11
+ *
+ */
+@import './reset';
+@import './element';
+@import './router-animate';
+
+.pointer {
+  cursor: pointer;
+}
+
+.clear:after {
+  height: 0;
+
+  display: block;
+
+  content: '';
+  overflow: hidden;
+  clear: both;
+}
+
+.omit {
+  width: 100%;
+
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

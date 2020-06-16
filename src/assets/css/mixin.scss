@@ -1,0 +1,61 @@
+/**
+ *
+ * @Description: sass mixin 文件
+ * @Author: Owen
+ * @Date: 2019-06-14 16:11
+ *
+ */
+
+/**
+ *
+ * @Description: 边框函数
+ * @param{$direction}: 方向
+ * @param{$size}: 大小
+ * @param{$type}: 格式
+ * @param{$color}: 颜色
+ *
+ */
+
+@mixin m-border(
+	$direction: 'all',
+	$size: 1px,
+	$type: solid,
+	$color: $m-border-color
+) {
+	@if $direction == 'top' {
+		border-top: $size $type $color
+	} @else if $direction == 'right' {
+		border-right: $size $type $color
+	} @else if $direction == 'bottom' {
+		border-bottom: $size $type $color
+	} @else if $direction == 'left' {
+		border-left: $size $type $color
+	} @else {
+		border: 1px solid $m-border-color;
+	}
+}
+
+/**
+ *
+ * @Description: 间距
+ * @param{$type}: 类型
+ * @param{$top}: 上间距
+ * @param{$right}: 右间距
+ * @param{$bottom}: 下间距
+ * @param{$left}: 左间距
+ *
+ */
+
+@mixin m-spacing(
+	$type: margin,
+	$top: 8upx,
+	$right: 16upx,
+	$bottom: 8upx,
+	$left: 16upx
+) {
+	@if $type == margin {
+		margin: $top $right $bottom $left;
+	} @else {
+		padding: $top $right $bottom $left;
+	}
+}

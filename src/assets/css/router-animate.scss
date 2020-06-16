@@ -1,0 +1,28 @@
+/**
+ *
+ * @Description: 路由动画样式文件
+ * @Author: Owen
+ * @Date: 2019-06-21 11:51
+ *
+ */
+
+.router-animate-leave-active,
+.router-animate-enter-active {
+  transition: opacity,transform .2s;
+}
+
+.router-animate-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.router-animate-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+@media screen and (min-width: 1280px) {
+  html {
+    overflow-x: hidden;
+  }
+}
