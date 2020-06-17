@@ -138,12 +138,12 @@ export default class LoginApi extends Vue {
     window.$imageStabilization(() => {
       // (this.$refs[formName] as any).validate((valid: any) => {
       //   if (valid) {
-      //     this.submit();
+          this.submit();
       //   } else {
       //     return false;
       //   }
       // });
-      this.$router.push('/Pylons/information')
+      // this.$router.push('/Pylons/information')
     });
   }
 
@@ -157,34 +157,36 @@ export default class LoginApi extends Vue {
   private async submit() {
     const { username, password } = this.loginForm;
     // this.loginText = "正在登录...";
-    let result: any = await window.$request.post(
-      `${domain}` + "/api/login/exists",
-      {
-        body: {
-          username,
-          password,
-          user_type: 2,
-          login_type: 1,
-          from_type: 1
-        },
-        isToken: false,
-        isLoading: false,
-        isExportFail: true
-      }
-    );
-    if (result.data.status_code !== 200 ) {
-      this.loginText = "登录";
-      return
-    } else {
-      this.loginText = "正在登录...";
-    }
-    let showTitle: string = result.data.title
+    // let result: any = await window.$request.post(
+    //   `${domain}` + "/api/login/exists",
+    //   {
+    //     body: {
+    //       username,
+    //       password,
+    //       user_type: 2,
+    //       login_type: 1,
+    //       from_type: 1
+    //     },
+    //     isToken: false,
+    //     isLoading: false,
+    //     isExportFail: true
+    //   }
+    // );
+    let result: any = {}
+    // if (result.data.status_code !== 200 ) {
+    //   this.loginText = "登录";
+    //   return
+    // } else {
+    //   this.loginText = "正在登录...";
+    // }
+    let showTitle: string = "百草坡"
+    // let showTitle: string = result.data.title
     let adminFlag: boolean = false
-    let limit: any[] = result.data.auth_limit 
+    let limit: any[] = ['admin'] 
+    // let limit: any[] = result.data.auth_limit 
     let ROLE: any = {
-      admin: ['基础数据', '客户管理', '挂架管理', '交易管理', '物流管理', '系统管理'],
-      sales: ['挂架管理', '交易管理', '客户管理'],
-      product: ['基础数据', '挂架管理', '物流管理']
+      admin: ['数据', '系统'],
+      user: ['数据']
     }
     let except: string[] = []
     
@@ -212,31 +214,32 @@ export default class LoginApi extends Vue {
 
   private async handleToken() {
     const { username, password } = this.loginForm;
-    const result: any = await window.$request.post(
-      `${domain}${loginModule.token}`,
-      {
-        body: {
-          client_id: 2,
-          client_secret,
-          grant_type,
-          scope: "*",
-          username,
-          password,
-          user_type: 2,
-          login_type: 1
-        },
-        isToken: false,
-        isLoading: false,
-        isExportFail: true
-      }
-    );
+    // const result: any = await window.$request.post(
+    //   `${domain}${loginModule.token}`,
+    //   {
+    //     body: {
+    //       client_id: 2,
+    //       client_secret,
+    //       grant_type,
+    //       scope: "*",
+    //       username,
+    //       password,
+    //       user_type: 2,
+    //       login_type: 1
+    //     },
+    //     isToken: false,
+    //     isLoading: false,
+    //     isExportFail: true
+    //   }
+    // );
+    const result: any = '' 
 
     if (result.code === 0) {
       this.loginText = "登录";
       return Promise.reject();
     }
 
-    window.token = result.data && result.data.access_token;
+    window.token = result.data && result.data.access_token || 'bear';
 
     return window.token || "";
   }
@@ -253,7 +256,7 @@ export default class LoginApi extends Vue {
       id: 0,
       name: username
     };
-    const HOME_URL: string = "/";
+    const HOME_URL: string = "/index";
 
     localStorage.setItem("accessToken", token);
     localStorage.setItem("user", JSON.stringify(user));

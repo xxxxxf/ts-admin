@@ -10,6 +10,7 @@ import Vue from 'vue'
 import axios from 'axios'
 
 import store from './store'
+// import echarts from 'echarts'
 import router from './router'
 import '@/router/handleRouter'
 import './useComponents'
@@ -40,6 +41,7 @@ Vue.directive('enterBlank', {inserted(el: any) {
   }
 })
 Vue.prototype.$ajax = axios
+// Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 
 new Vue({

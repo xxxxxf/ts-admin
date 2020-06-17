@@ -9,11 +9,8 @@
 <template>
   <el-container id="index">
     <el-header>
-      <!-- <img src="../assets/images/smart_fabric.jpg" alt=""> -->
 
       <el-dropdown @command="handleCommand">
-        <!-- <span class="test">{{user}}</span> -->
-        
         <span class="el-dropdown-link">
           <i class="iconren iconfont icon" style="margin-right:5px;"></i>{{ showTitle ? showTitle : user && user.name || '-' }}<i class="el-icon-arrow-down el-icon--right"></i>
         </span>
@@ -22,10 +19,12 @@
           <el-dropdown-item command="logout">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
+      <img src="../assets/images/smart_fabric.jpg" alt="">
     </el-header>
     <el-container>
-      <el-aside width="60px">
-        <sf-menu :menu="menu" @setUrl="handleLink"></sf-menu>
+      <el-aside style="width:200px">
+        <!-- <el-menu :menu="menu" @setUrl="handleLink"></el-menu> -->
+        <a-menu :menu="menu" @setUrl="handleLink"></a-menu>
       </el-aside>
       <el-main>
         <transition name="router-animate" mode="out-in">
@@ -38,8 +37,13 @@
 
 <script lang="ts">
   import { Component, Vue } from "vue-property-decorator"
+  import aMenu from "@/components/common/menu.vue"
 
-  @Component
+  @Component({
+    components: {
+      aMenu
+    }
+  })
 
   export default class Index extends Vue {
     /**
@@ -68,6 +72,7 @@
      */
 
     private handleLink(menuItem: any): void {
+      // console.log(menuItem, '546+54+65')
       this.$router.push('/' + menuItem.href)
     }
 
@@ -115,7 +120,7 @@
     }
 
     private created() {
-      let tempMenu = require(`../config/menu.json`);
+      this.menu = require(`../config/menu.json`);
       
       // let tempMenu: any[] | string | null = localStorage.getItem('menu')
       let user: any = localStorage.getItem('user')
@@ -134,16 +139,18 @@
         user = { id: 0, name: '' }
       }
       const tempPromise: string[] = promise ? JSON.parse(promise) : []
-      console.log(tempPromise, 'tempPromise----'); // ["客户管理", "交易管理", "系统管理", "基础数据", "物流管理"]
       // const tempPromise: string[] = JSON.parse(promise!)
 
-      let aMenu = tempMenu.filter((item: any) => {
-            return tempPromise.findIndex((v: any) => v === item.name) !== -1
-        })
+      // let aMenu = tempMenu
+    //   let aMenu = tempMenu.filter((item: any) => {
+    //         return tempPromise.findIndex((v: any) => v === item.name) !== -1
+    //     })
 
-      this.menu = JSON.parse(JSON.stringify(aMenu))
+      // this.menu = JSON.parse(JSON.stringify(aMenu))
       this.user = JSON.parse(JSON.stringify(user))
       this.showTitle = showTitle
+      console.log(this.menu, 'tempPromise----'); // ["客户管理", "交易管理", "系统管理", "基础数据", "物流管理"]
+
       // tempMenu = null
       user = null
     }
@@ -190,12 +197,9 @@
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, .2);
 
     img {
-      width: 60px;
-      height: 60px;
-    }
-
-    .el-dropdown {
-
+      margin-left: 24px;
+      width: 72px;
+      height: 50px;
     }
   }
 
@@ -204,7 +208,7 @@
   }
 
   .el-aside {
-    background-color: #FFFFFF;
+    background-color: #fff;
 
     .sf-menu {
       top: 0;

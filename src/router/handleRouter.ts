@@ -14,8 +14,7 @@ import '@/assets/css/progress.scss'
 let progress: any = Progress({})
 
 const Login: string = '/login'
-const forgetPassword: string = '/forgetPassword'
-const HOME_URL: string = '/Pylons/information'
+const HOME_URL: string = '/index'
 Router.beforeEach((to, from, next): void => {
   progress.start()
   document.title = getPageTitle(to.meta.title)
@@ -23,28 +22,28 @@ Router.beforeEach((to, from, next): void => {
   //   progress.close()
   //   return next()
   // }
-  // if (!window.token && to.path !== Login) {
-  //   progress.close()
+  if (!window.token && to.path !== Login) {
+    progress.close()
 
-  //   return next(Login)
-  // }
+    return next(Login)
+  }
 
-  // if (
-  //   window.token &&
-  //   to.path === Login
-  // ) {
-  //   progress.close()
+  if (
+    window.token &&
+    to.path === Login
+  ) {
+    progress.close()
 
-  //   return next(HOME_URL)
-  // }
+    return next(HOME_URL)
+  }
 
-  // if (
-  //   window.token &&
-  //   to.path === '' ||
-  //   to.path === '/'
-  // ) {
-  //   return next(HOME_URL)
-  // }
+  if (
+    window.token &&
+    to.path === '' ||
+    to.path === '/'
+  ) {
+    return next(HOME_URL)
+  }
 
   next()
 })

@@ -14,6 +14,7 @@
     "axios": "^0.18.0",
     "babel-plugin-component": "^1.1.1",
     "core-js": "^2.6.5",
+    "echarts": "^4.8.0",
     "element-ui": "2.6.3",
     "sfabric-component": "git+ssh://git@120.77.149.190:10022/sfabric/sfabric-component.git",
     "sortablejs": "^1.10.0-rc3",

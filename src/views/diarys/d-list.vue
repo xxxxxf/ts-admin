@@ -1,7 +1,7 @@
 <template>
   <div class="shelf">
     <div class="list-header">
-      <h2 class="list-header-title">挂架分类</h2>
+      <h2 class="list-header-title">发布管理</h2>
 
       <div class="block">
         <span>分类</span>

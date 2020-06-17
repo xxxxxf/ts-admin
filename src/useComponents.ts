@@ -42,11 +42,17 @@ import {
   Cascader,
   Steps,
   Step,
-  Transfer
+  Transfer,
+  Menu,
+  Submenu,
+  MenuItem,
+  MenuItemGroup
 } from 'element-ui'
+
 
 // @ts-ignore
 // import { sfMenu, sfTable, sfSearch, sfPagination, sfSelect } from 'sfabric-component'
+import { sfMenu } from '@/components/common/sf-menu/sf-menu.vue'
 
 // use element-ui components start
 Vue.use(Container)
@@ -81,6 +87,10 @@ Vue.use(Cascader)
 Vue.use(Steps)
 Vue.use(Step)
 Vue.use(Transfer)
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItem)
+Vue.use(MenuItemGroup)
 
 window.$message = Message
 window.$loading = Loading

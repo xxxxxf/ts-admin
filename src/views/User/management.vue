@@ -5,7 +5,6 @@
       <div class="search-list shelt-search">
         <sf-search :search-source="searchSource" @search-result="onSearchResult"></sf-search>
       </div>
-
       <div class="btn-group">
         <el-button type="primary" size="mini" @click="handleAdd(-1)">新增用户</el-button>
       </div>

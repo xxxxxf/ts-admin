@@ -6,9 +6,9 @@
  *
  */
 
-import development from './development'
+import development from './dev'
 import test from './test'
-import production from './production'
+import production from './pro'
 
 let domain: string
 let client_id: number
