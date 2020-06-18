@@ -52,7 +52,9 @@ import {
 
 // @ts-ignore
 // import { sfMenu, sfTable, sfSearch, sfPagination, sfSelect } from 'sfabric-component'
-import { sfMenu } from '@/components/common/sf-menu/sf-menu.vue'
+
+import aPagination from '@/components/common/pagination.vue'
+Vue.component('aPagination', aPagination)
 
 // use element-ui components start
 Vue.use(Container)
@@ -101,6 +103,5 @@ window.$confirm = MessageBox.confirm
 // Vue.use(sfMenu)
 // Vue.use(sfTable)
 // Vue.use(sfSearch)
-// Vue.use(sfPagination)
 // Vue.use(sfSelect)
 // use base components end

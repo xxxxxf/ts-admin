@@ -156,34 +156,32 @@ export default class LoginApi extends Vue {
 
   private async submit() {
     const { username, password } = this.loginForm;
-    // this.loginText = "正在登录...";
-    // let result: any = await window.$request.post(
-    //   `${domain}` + "/api/login/exists",
-    //   {
-    //     body: {
-    //       username,
-    //       password,
-    //       user_type: 2,
-    //       login_type: 1,
-    //       from_type: 1
-    //     },
-    //     isToken: false,
-    //     isLoading: false,
-    //     isExportFail: true
-    //   }
-    // );
-    let result: any = {}
-    // if (result.data.status_code !== 200 ) {
-    //   this.loginText = "登录";
-    //   return
-    // } else {
-    //   this.loginText = "正在登录...";
-    // }
+    this.loginText = "正在登录...";
+    let result: any = await window.$request.post(
+      `${domain}` + "/mini/denglu",
+      {
+        body: {
+          uname: username,
+          upass: password,
+          user_type: 2,
+          login_type: 1,
+          from_type: 1
+        },
+        isToken: false,
+        isLoading: false,
+        isExportFail: true
+      }
+    );
+    if (result.data.code !== 200 ) {
+      window.$message.error(result.data.msg);
+      this.loginText = "登录";
+      return
+    } else {
+      this.loginText = "正在登录...";
+    }
     let showTitle: string = "百草坡"
-    // let showTitle: string = result.data.title
     let adminFlag: boolean = false
-    let limit: any[] = ['admin'] 
-    // let limit: any[] = result.data.auth_limit 
+    let limit: any[] = result.data.data.limit 
     let ROLE: any = {
       admin: ['数据', '系统'],
       user: ['数据']
@@ -202,46 +200,9 @@ export default class LoginApi extends Vue {
       this.loginText = "登录";
       return Promise.reject();
     }
-    const token = await this.handleToken();
-    const url = await this.handleAccount(token);
+    window.token = result.data.data && result.data.data.token || '';
+    const url = await this.handleAccount(window.token);
     this.$router.push(url);
-  }
-  /**
-   *
-   * @description: 生成 token 接口
-   *
-   */
-
-  private async handleToken() {
-    const { username, password } = this.loginForm;
-    // const result: any = await window.$request.post(
-    //   `${domain}${loginModule.token}`,
-    //   {
-    //     body: {
-    //       client_id: 2,
-    //       client_secret,
-    //       grant_type,
-    //       scope: "*",
-    //       username,
-    //       password,
-    //       user_type: 2,
-    //       login_type: 1
-    //     },
-    //     isToken: false,
-    //     isLoading: false,
-    //     isExportFail: true
-    //   }
-    // );
-    const result: any = '' 
-
-    if (result.code === 0) {
-      this.loginText = "登录";
-      return Promise.reject();
-    }
-
-    window.token = result.data && result.data.access_token || 'bear';
-
-    return window.token || "";
   }
 
   /**
@@ -264,13 +225,6 @@ export default class LoginApi extends Vue {
 
     return HOME_URL;
   }
-  // private async forgetPassword(data: any) {
-  //   // this.$router.push('/forgetPassword')
-  //   this.$router.push(
-  //    { path: "/forgetPassword"}
-  //   )
-  //   localStorage.setItem("forgetPassword", data);
-  // }
 }
 </script>
 

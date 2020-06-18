@@ -283,7 +283,7 @@ export default class User extends Vue {
   // 关联客户弹窗
   private relatedFlag: boolean = false;
   private created() {
-    // this.getData();
+    this.getData();
   }
   // 搜索条件配置
   private searchSource: any[] = [
@@ -443,7 +443,7 @@ export default class User extends Vue {
   }
   private async getData() {
     const result = await window.$request({
-      url: `${domain}` + "/adminapi/user/admin-index?page=1&per_page=20"
+      url: `${domain}` + "/admin/ulist?page=1&per_page=20"
     });
     this.tableData = result.data.data.data;
   }

@@ -35,10 +35,10 @@ export default function dispatchRequest(requestConfig: RequestConfig): Promise<a
         .then((body: any) => {
           clearTimeout(loginTimer)
           closeLoading(isLoading, loadingInstance)
-
+          
           if (
-            body.data.status_code === 200 ||
-            body.request.responseURL.includes('oauth/token')
+            body.data.code === 200 ||
+            body.request.responseURL.includes('mini/denglu')
           ) {
             resolve(body)
           } else {
@@ -48,7 +48,7 @@ export default function dispatchRequest(requestConfig: RequestConfig): Promise<a
               resolve(body)
             }
 
-            return Message.error(body.data && body.data.message || '系统维护中，请稍后再试！')
+            return Message.error(body.data && body.data.msg || '系统维护中，请稍后再试！')
           }
 
         })
@@ -67,7 +67,7 @@ export default function dispatchRequest(requestConfig: RequestConfig): Promise<a
           switch (fail.status) {
             /// token 经常无效 跳转登录页
             case 401 :
-              message = fail.data && fail.data.message || '登录超时，请重新登录！'
+              message = fail.data && fail.data.msg || '登录超时，请重新登录！'
               window.token = null;
               localStorage.clear();
               window.location.reload()
@@ -76,7 +76,7 @@ export default function dispatchRequest(requestConfig: RequestConfig): Promise<a
               message = '服务端路由不存在！'
               break
             default:
-              message = fail.data && fail.data.message || '系统维护中，请稍后再试！'
+              message = fail.data && fail.data.msg || '系统维护中，请稍后再试！'
           }
 
           Message.error(message)
@@ -111,7 +111,7 @@ function transformConfig(requestConfig: RequestConfig): any {
     if (isToken) {
       if (window.token) {
         headers = {
-          Authorization: 'Bearer ' + window.token
+          Authorization: window.token
         }
       } else {
         return false

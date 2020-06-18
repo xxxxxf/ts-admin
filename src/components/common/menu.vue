@@ -12,13 +12,13 @@
         <el-menu-item index="1" @click="bindClick({href: 'index'})">
           <span slot="title">首页</span>
         </el-menu-item>
-        <el-submenu v-for="(ele, i) in menu" :key="i" :index="i+3">
+        <el-submenu v-for="(ele, i) in menu" :key="i" :index="i+2+''">
           <template slot="title">
             <i class="el-icon-location"></i>
             <span>{{ele.name}}</span>
           </template>
           <el-menu-item-group v-for="(ite, ind) in ele.list" :key="ind">
-            <el-menu-item :index="(i+3)+'-'+(ind+1)" @click="bindClick(ite)">{{ite.name}}</el-menu-item>
+            <el-menu-item :index="(i+2)+'-'+(ind+1)" @click="bindClick(ite)">{{ite.name}}</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>
